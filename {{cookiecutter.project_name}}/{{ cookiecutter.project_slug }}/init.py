@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import db, settings
-from {{ cookiecutter.project_slug }}.handlers import (
-    {{ cookiecutter.resource_name }}
+from {{ cookiecutter.project_slug }}.handler import (
+    {{ cookiecutter.resource_name }}_Hander
 )
 _SETTINGS = settings.Settings()
 

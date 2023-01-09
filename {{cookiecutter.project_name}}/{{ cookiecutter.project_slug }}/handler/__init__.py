@@ -1,3 +1,3 @@
 __version__ = "0.1.0"
 
-import Handler
+import .{{ cookiecutter.resource_name }} import {{ cookiecutter.resource_name }}_Handler

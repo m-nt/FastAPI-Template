@@ -3,7 +3,7 @@ from pymongo.collection import Collection
 from typing import Any
 
 @dataclasses.dataclass
-class Handler:
+class {{ cookiecutter.resource_name }}_Handler:
     collection: Collection
     # TODO: add functions to handle requests
     async def get_{{ cookiecutter.resource_name }}(
