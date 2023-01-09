@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import db, settings
 from {{ cookiecutter.project_slug }}.handler import (
-    {{ cookiecutter.resource_name }}_Hander
+    {{ cookiecutter.resource_name }}_Handler
 )
 _SETTINGS = settings.Settings()
 
