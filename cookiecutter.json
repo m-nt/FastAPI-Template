@@ -19,6 +19,6 @@
   "fastapi_version": "0.78.0",
   "uvicorn_version": "0.20.0",
   "pymongo_version": "4.3.3",
-  "motor_version": "3.1.1",
+  "motor_version": "3.0.0",
   "number_of_workers": 2
 }

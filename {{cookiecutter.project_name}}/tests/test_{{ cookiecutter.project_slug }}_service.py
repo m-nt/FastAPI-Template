@@ -1,7 +1,8 @@
 from {{ cookiecutter.project_slug }} import __version__
 import pytest
 
-from {{ cookiecutter.project_slug }}.handler import {{ cookiecutter.resource_name }}_handler
+from {{ cookiecutter.project_slug }}.handler import Handler
+{{ cookiecutter.resource_name}}_hander = Handler()
 
 def test_version():
     assert __version__ == "0.1.0"

@@ -10,4 +10,4 @@ class Handler:
         self,
         data: str,
     ) -> Any:
-        return "{{ cookiecutter.project_slug }}"
+        return data

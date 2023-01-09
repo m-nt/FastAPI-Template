@@ -14,7 +14,7 @@ python = "^{{ cookiecutter.python_version }}"
 fastapi = "^{{ cookiecutter.fastapi_version }}"
 uvicorn = {version = "^{{ cookiecutter.uvicorn_version }}", extras = ["standard"]}
 pymongo = "^{{ cookiecutter.pymongo_version }}"
-motor = "^{{ cookiecutter.pymongo_version }}"
+motor = "^{{ cookiecutter.motor_version }}"
 
 [tool.poetry.dev-dependencies]
 pytest = "7.2.0"
@@ -27,5 +27,5 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-rundev = "uvicorn media_service.app:app --host 0.0.0.0 --port 8000 --reload"
+rundev = "uvicorn {{ cookiecutter.resource_name }}_service.app:app --host 0.0.0.0 --port 8000 --reload"
 format = "black ."
