@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from {{cookiecutter.project_slug}} import init
+from {{cookiecutter.project_slug}}.init import set_context
 from {{ cookiecutter.project_slug }}.settings import get_settings
-from {{ cookiecutter.project_slug }}.routes import {{ cookiecutter.resource_name }}_router
+from {{ cookiecutter.project_slug }}.routes.{{ cookiecutter.resource_name }} import {{ cookiecutter.resource_name }}_router
 
 _settings = get_settings()
 
@@ -24,6 +24,6 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
-    await init.set_context(app)
+    await set_context(app)
 
 app.include_router({{ cookiecutter.resource_name }}_router)

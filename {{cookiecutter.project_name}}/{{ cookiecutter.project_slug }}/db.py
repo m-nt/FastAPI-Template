@@ -10,7 +10,4 @@ _database = client.get_database("{{ cookiecutter.project_name }}")
 
 {{cookiecutter.project_slug}}s_collection: Collection = _database.get_collection("{{ cookiecutter.resource_name }}")
 
-###############################################################################
-#                             Create Indexes                                  #
-###############################################################################
-{{cookiecutter.project_slug}}s_collection.create_index("rid", unique=True)
+

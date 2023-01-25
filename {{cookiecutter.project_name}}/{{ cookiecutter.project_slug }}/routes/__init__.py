@@ -1,5 +1,1 @@
-__version__ = "0.1.0"
-
-from .{{ cookiecutter.resource_name }} import (
-    {{cookiecutter.resource_name}}_router
-)
+__version__ = {{ cookiecutter.version }}
