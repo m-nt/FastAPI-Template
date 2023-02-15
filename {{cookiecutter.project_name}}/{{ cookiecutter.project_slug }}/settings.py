@@ -7,9 +7,7 @@ class Settings(BaseSettings):
     """
 
     DATABASE_URL: str = "mongodb://localhost:27017"
-    SERVICE_NAME: str = "media_service"
-    ENV_MODE: str = "dev"
-    EVENT_STORE: str = "test"
+    SERVICE_NAME: str = "{{ cookiecutter.project_slug }}"
     CERBOS_URL: str = "http://localhost:3592"
     CERBOS_POLICY_VERSION: str = "default"
 
