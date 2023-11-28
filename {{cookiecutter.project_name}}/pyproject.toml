@@ -7,7 +7,7 @@ authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 [[tool.poetry.source]]
 name = "{{cookiecutter.poetry_source_name}}"
 url = "{{cookiecutter.poetry_source_address}}"
-secondary = true
+priority = "supplemental"
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
