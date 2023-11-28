@@ -1,16 +1,18 @@
-FROM python:3.9-alpine
+FROM python:3.10-slim
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+    curl \
+    build-essential
+
+RUN pip install poetry
+
+WORKDIR $PYSETUP_PATH
+COPY poetry.lock pyproject.toml ./
+
+RUN poetry export --without-hashes -f requirements.txt > requirements.txt
+RUN pip install -r requirements.txt
+
+
 WORKDIR /app
-
-# RUN pip install poetry && poetry config virtualenvs.create false
-
-# ADD pyproject.toml pyproject.toml
-# ADD poetry.lock poetry.lock
-
-# RUN poetry export --without-hashes -f requirements.txt > /app/requirements.txt
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r /app/requirements.txt
-
-ENV WEB_CONCURRENCY=2
-COPY user_service /app/user_service
-
-CMD ["uvicorn", "user_service.app:app", "--host", "0.0.0.0", "--port", "8000"]
+COPY . /app/
+CMD uvicorn {{ cookiecutter.project_slug }}.app:app --host 0.0.0.0 --port 3000 --workers 2
