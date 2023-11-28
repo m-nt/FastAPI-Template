@@ -1,8 +1,9 @@
 {
   "author": "Mohamad nosratian",
-  "email": "mohn.info@gmail.com",
+  "email": "mohn.info@gmail.com",\
+  "poetry_source_domain": "domain",
   "poetry_source_name": "source-name",
-  "poetry_source_address": "https://pypi.<domain>.ir/simple/",
+  "poetry_source_address": "https://pypi.{{cookiecutter.poetry_source_domain}}.ir/simple/",
   "resource_name": "resource",
   "project_name": "{{cookiecutter.resource_name}}-service",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
@@ -15,8 +16,8 @@
     "Apache Software License 2.0",
     "Not open source"
   ],
-  "python_version": "3.9",
-  "fastapi_version": "0.78.0",
+  "python_version": "3.10",
+  "fastapi_version": "0.89.0",
   "uvicorn_version": "0.20.0",
   "pymongo_version": "4.3.3",
   "motor_version": "3.0.0",
