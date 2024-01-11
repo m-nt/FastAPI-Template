@@ -1,6 +1,6 @@
 {
   "author": "Mohamad nosratian",
-  "email": "mohn.info@gmail.com",\
+  "email": "mohn.info@gmail.com",
   "poetry_source_domain": "domain",
   "poetry_source_name": "source-name",
   "poetry_source_address": "https://pypi.{{cookiecutter.poetry_source_domain}}.ir/simple/",
