@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 
 from {{ cookiecutter.project_slug }}.settings import get_settings
 from {{ cookiecutter.project_slug }}.handler.{{ cookiecutter.resource_name }} import {{ cookiecutter.resource_name }}_Handler
