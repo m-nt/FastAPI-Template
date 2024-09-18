@@ -23,9 +23,9 @@
   "pytest_asyncio_version": "0.23.8",
   "schedule_version": "1.2.2",
   "poethepoet_version": "0.16.5",
-  "fastapi_version": "0.89.0",
-  "uvicorn_version": "0.20.0",
-  "pymongo_version": "4.3.3",
-  "motor_version": "3.0.0",
-  "number_of_workers": 2
+  "fastapi_version": "0.115.0",
+  "uvicorn_version": "0.30.6",
+  "pymongo_version": "4.8.0",
+  "motor_version": "3.5.1",
+  "number_of_workers": 4
 }
