@@ -14,7 +14,7 @@ _SETTINGS = get_settings()
 class Context:
     {{ cookiecutter.resource_name }}_handler: {{ cookiecutter.resource_name }}_Handler
 
-_{{ cookiecutter.resource_name }}_handler = {{ cookiecutter.resource_name }}_Handler(collection={{cookiecutter.project_slug}}s_collection)
+_{{ cookiecutter.resource_name }}_handler = {{ cookiecutter.resource_name }}_Handler({{ cookiecutter.resource_name }}={{cookiecutter.project_slug}}s_collection)
 
 def get_context_from_request(request: Request) -> Context:
     return request.app.state.context
