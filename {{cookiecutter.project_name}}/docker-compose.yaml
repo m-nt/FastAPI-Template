@@ -1,0 +1,95 @@
+services:
+  {{ cookiecutter.resource_name }}-mongo:
+    image: mongo
+    container_name: {{ cookiecutter.resource_name }}-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - {{ cookiecutter.resource_name }}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+          memory: '600M'
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+    env_file:
+      - .env
+    healthcheck:
+      test: echo 'db.stats().ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    volumes:
+      - {{ cookiecutter.resource_name }}-mongo:/data/db
+  {{ cookiecutter.resource_name }}-redis:
+    image: redis
+    container_name: {{ cookiecutter.resource_name }}-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - {{ cookiecutter.resource_name }}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+          memory: '100M'
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-p", "6379", "ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  {{ cookiecutter.resource_name }}:
+    image: {{ cookiecutter.resource_name }}
+    container_name: {{ cookiecutter.resource_name }}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - {{ cookiecutter.resource_name }}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '200M'
+      restart_policy:
+        condition: any
+        delay: 5s
+        window: 120s
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD", "curl", "-X", "GET", "http://localhost:3000/liveness" ]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: pyproject.toml
+        - action: rebuild
+          path: poetry.lock
+        - action: rebuild
+          path: .env
+networks:
+  {{ cookiecutter.resource_name }}:
+volumes:
+  {{ cookiecutter.resource_name }}-mongo:

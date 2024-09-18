@@ -1,0 +1,53 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI Services",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "console": "integratedTerminal",
+            "args": [
+                "src.{{ cookiecutter.project_slug }}.app:app",
+                "--host",
+                "${input:host}",
+                "--port",
+                "${input:port}",
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}",
+            "envFile": "${input:envPath}",
+            "preLaunchTask": "prepare fastapi"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "envPath",
+            "description": "the path to the .env file",
+            "default": "${workspaceFolder}/.env",
+            "type": "promptString"
+        },
+        {
+            "id": "port",
+            "description": "the service port",
+            "default": "6969",
+            "type": "promptString"
+        },
+        {
+            "id": "host",
+            "description": "the service host",
+            "default": "0.0.0.0",
+            "type": "pickString",
+            "options": [
+                "0.0.0.0",
+                "127.0.0.1",
+                "localhost"
+            ]
+        }
+    ]
+}

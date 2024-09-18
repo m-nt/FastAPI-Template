@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "create venv",
+            "command": "virtualenv",
+            "type": "shell",
+            "args": [
+                "${workspaceFolder}/.venv"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "lock dependencies",
+            "type": "shell",
+            "command": "poetry lock",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "install dependencies",
+            "type": "shell",
+            "command": "poetry install",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "prepare fastapi",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "create venv",
+                "lock dependencies",
+                "install dependencies"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "docker watch",
+            "type": "shell",
+            "command": "docker compose watch --prune --quiet",
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}
