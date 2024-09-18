@@ -1,6 +1,6 @@
 {
-  "author": "Mohamad nosratian",
-  "email": "mohn.info@gmail.com",
+  "author": "mohamad nosratian",
+  "email": "<68176509+m-nt@users.noreply.github.com>",
   "poetry_source_domain": "domain",
   "poetry_source_name": "source-name",
   "poetry_source_address": "https://pypi.{{cookiecutter.poetry_source_domain}}.ir/simple/",
@@ -17,6 +17,12 @@
     "Not open source"
   ],
   "python_version": "3.10",
+  "pydantic_version": "2.8.2",
+  "pydantic_setting_version": "2.3.4",
+  "pytest_version": "8.2.2",
+  "pytest_asyncio_version": "0.23.8",
+  "schedule_version": "1.2.2",
+  "poethepoet_version": "0.16.5",
   "fastapi_version": "0.89.0",
   "uvicorn_version": "0.20.0",
   "pymongo_version": "4.3.3",

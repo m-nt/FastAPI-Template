@@ -1,18 +1,20 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     curl \
-    build-essential
+    build-essential \
+    supervisor
 
+EXPOSE 3000
 RUN pip install poetry
 
 WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml ./
 
-RUN poetry export --without-hashes -f requirements.txt > requirements.txt
-RUN pip install -r requirements.txt
-
+RUN poetry install --no-dev
+ENV WEB_CONCURRENCY=2
 
 WORKDIR /app
 COPY . /app/
-CMD uvicorn {{ cookiecutter.project_slug }}.app:app --host 0.0.0.0 --port 3000 --workers 2
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

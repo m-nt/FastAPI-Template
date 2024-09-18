@@ -1,10 +1,10 @@
 import dataclasses
-from pymongo.collection import Collection
+from motor.motor_asyncio import AsyncIOMotorCollection
 from typing import Any
 
 @dataclasses.dataclass
 class {{ cookiecutter.resource_name }}_Handler:
-    collection: Collection
+    {{ cookiecutter.resource_name }}: AsyncIOMotorCollection
     # TODO: add functions to handle requests
     async def get_{{ cookiecutter.resource_name }}(
         self,

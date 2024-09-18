@@ -16,16 +16,8 @@ class Context:
 
 _{{ cookiecutter.resource_name }}_handler = {{ cookiecutter.resource_name }}_Handler(collection={{cookiecutter.project_slug}}s_collection)
 
-class ExampleMiddleware(BaseHTTPMiddleware):
-    def __init__(
-        self,
-        app,
-    ):
-        super().__init__(app)
-
-    async def dispatch(self, request: Request, call_next):
-        response = await call_next(request)
-        return response
+def get_context_from_request(request: Request) -> Context:
+    return request.app.state.context
 
 def get_context() -> Context:
     return Context(
@@ -34,5 +26,4 @@ def get_context() -> Context:
 
 
 async def set_context(app: FastAPI) -> None:
-    app.add_middleware(ExampleMiddleware)
     app.state.context = get_context()
