@@ -1,4 +1,5 @@
 import logging
+import time
 import schedule
 
 from {{ cookiecutter.project_slug }}.settings import get_settings
