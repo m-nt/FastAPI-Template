@@ -3,18 +3,19 @@ RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     curl \
     build-essential \
-    supervisor
+    supervisor \
+    vim \
+    net-tools
 
 EXPOSE 3000
 RUN pip install poetry
 
-WORKDIR $PYSETUP_PATH
+WORKDIR /app
+COPY . /app/
 COPY poetry.lock pyproject.toml ./
 
 RUN poetry install --no-dev
 ENV WEB_CONCURRENCY=2
 
-WORKDIR /app
-COPY . /app/
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD ./src/{{ cookiecutter.project_slug }}/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
