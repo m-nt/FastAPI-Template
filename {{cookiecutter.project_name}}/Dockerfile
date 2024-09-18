@@ -14,6 +14,7 @@ WORKDIR /app
 COPY . /app/
 COPY poetry.lock pyproject.toml ./
 
+RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 ENV WEB_CONCURRENCY=2
 
