@@ -22,7 +22,7 @@ schedule = "^{{ cookiecutter.schedule_version }}"
 
 [tool.poetry.dev-dependencies]
 pytest = "^{{ cookiecutter.pytest_version }}"
-pytest-asyncio = "^{{ cookiecutter.pytest_asyncio_setting_version }}"
+pytest-asyncio = "^{{ cookiecutter.pytest_asyncio_version }}"
 poethepoet = "^{{ cookiecutter.poethepoet_version }}"
 
 [build-system]
