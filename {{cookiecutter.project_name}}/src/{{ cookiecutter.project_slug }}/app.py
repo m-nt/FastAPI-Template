@@ -12,16 +12,16 @@ _settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup...
-    print("YeeePeee!")
+    print(f"\033[32;5mINFO:     \033[70;0mYeeePeee!")
     await set_context(app)
     yield
-    print("BYeYeeyeyye!")
+    print("\033[32;5mINFO:     \033[70;0mBYeYeeyeyye!")
     # Cleanups...
 
 if _settings.ENV_MODE == "prod":
     app = FastAPI(root_path="/{{ cookiecutter.resource_name }}/v1", lifespan=lifespan)
 else:
-    app = FastAPI()
+    app = FastAPI(lifespan=lifespan)
 
 origins = ["*"]
 app.add_middleware(
@@ -34,8 +34,8 @@ app.add_middleware(
 
 app.add_middleware(ExampleMiddleware)
 
-@app.on_event("startup")
-async def startup():
-    await set_context(app)
+@app.get("/liveness")
+def liveness():
+    return "OK"
 
 app.include_router({{ cookiecutter.resource_name }}_router)
