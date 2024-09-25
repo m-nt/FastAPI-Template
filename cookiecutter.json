@@ -27,5 +27,6 @@
   "uvicorn_version": "0.30.6",
   "pymongo_version": "4.8.0",
   "motor_version": "3.5.1",
+  "ujson_version": "5.10.0",
   "number_of_workers": 4
 }

@@ -19,6 +19,7 @@ motor = "^{{ cookiecutter.motor_version }}"
 pydantic = "^{{ cookiecutter.pydantic_version }}"
 pydantic-settings = "^{{ cookiecutter.pydantic_setting_version }}"
 schedule = "^{{ cookiecutter.schedule_version }}"
+ujson = "^{{ cookiecutter.ujson_version }}"
 
 [tool.poetry.dev-dependencies]
 pytest = "^{{ cookiecutter.pytest_version }}"
